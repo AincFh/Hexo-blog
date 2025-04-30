@@ -1,0 +1,27 @@
+/* 全局禁止文本选择和复制 */
+body {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* 允许代码块和评论区选择 */
+.highlight, pre, code, .comments, .comment, .allow-copy {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* 强化评论区输入框的选择权限，确保不会被全局规则覆盖 */
+#tcomment textarea.allow-copy,
+#tcomment input.allow-copy,
+#tcomment .el-textarea__inner.allow-copy,
+#tcomment .tk-input.allow-copy,
+#tcomment .tk-textarea.allow-copy {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
