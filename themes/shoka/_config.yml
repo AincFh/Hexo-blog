@@ -202,7 +202,7 @@ audio:
       - https://music.163.com/playlist?id=13641046209&uct2=U2FsdGVkX18ADv3GFDnr30FGwLE70pIkMTodwgrHPvM=
 
 # random image api
-image_server: "https://acg.xydwz.cn/api/api.php"
+#image_server: "https://acg.xydwz.cn/api/api.php"
 
 search:
   enable: true

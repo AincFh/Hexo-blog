@@ -48,23 +48,29 @@
   <div id="tcomment"></div>
   <script defer src="https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js"></script>
   <script>
-    twikoo.init({
-      envId: 'https://twikoojs-henna.vercel.app',
-      el: '#tcomment'
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        twikoo.init({
+          envId: 'https://twikoojs-henna.vercel.app',
+          el: '#tcomment'
+        });
+        // 评论区输入框允许复制粘贴右键
+        function enableTwikooInputCopy() {
+          var inputList = document.querySelectorAll('#tcomment textarea, #tcomment input, #tcomment .el-textarea__inner, #tcomment .tk-input, #tcomment .tk-textarea');
+          inputList.forEach(function(el){
+            el.classList.add('allow-copy');
+          });
+        }
+        setTimeout(enableTwikooInputCopy, 1000);
+        var observer = new MutationObserver(enableTwikooInputCopy);
+        var tcommentEl = document.getElementById('tcomment');
+        if (tcommentEl) {
+          observer.observe(tcommentEl, { childList: true, subtree: true });
+        }
+      } catch (e) {
+        console.error('Twikoo init failed:', e);
+      }
     });
-    // 评论区输入框允许复制粘贴右键
-    function enableTwikooInputCopy() {
-      var inputList = document.querySelectorAll('#tcomment textarea, #tcomment input, #tcomment .el-textarea__inner, #tcomment .tk-input, #tcomment .tk-textarea');
-      inputList.forEach(function(el){
-        el.classList.add('allow-copy');
-      });
-    }
-    setTimeout(enableTwikooInputCopy, 1000);
-    var observer = new MutationObserver(enableTwikooInputCopy);
-    var tcommentEl = document.getElementById('tcomment');
-    if (tcommentEl) {
-      observer.observe(tcommentEl, { childList: true, subtree: true });
-    }
   </script>
 
 </article>
